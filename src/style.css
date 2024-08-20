@@ -63,6 +63,10 @@
     --container-border-radius: 20px;
     --container-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
     --header-text-color: rgb(230, 231, 237);
+    --body-text-color: rgb(190, 190, 190);
+    --red: rgba(255, 0, 0, 0.6);
+    --orange: rgba(255, 180, 0, 0.7);
+    --green: rgba(44, 163, 0, 0.6);
 
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 
@@ -78,6 +82,7 @@
   }
 
   nav {
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -97,6 +102,7 @@
   }
 
   .main-grid {
+    margin-left: 78px;
     height: 100%;
     width: 100%;
     display: grid;
@@ -136,6 +142,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--container-box-shadow);
+    border: 1px solid var(--selected-hover-color)
   }
 
   .add:hover {
@@ -143,8 +150,7 @@
     background-color: var(--selected-hover-color);
   }
 
-  .projects-container,
-  .projects-grid {
+  .projects-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -156,7 +162,121 @@
   }
 
   .project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
     background-color: var(--selected-color);
-    padding: 25px 15px;
+    padding: 15px 25px 25px 25px;
+    margin: 15px 0;
     border-radius: var(--container-border-radius);
+    cursor: pointer;
+    border: 1px solid var(--selected-hover-color);
+  }
+
+  .project > h3 {
+    font-size: 20px;
+  }
+
+  .project > span {
+    font-family: monospace;
+    color: var(--body-text-color);
+  }
+
+  .to-do-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .to-do-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .to-do {
+    background-color: var(--selected-color);
+    padding: 15px 25px 25px 25px;
+    border-radius: var(--container-border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .project,
+  .to-do {
+    box-shadow: var(--container-box-shadow);
+  }
+
+  .project:hover,
+  .to-do:hover {
+    background-color: var(--selected-hover-color);
+    cursor: pointer;
+  }
+
+  .to-do-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .to-do-title > img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  .to-do-description {
+    font-family: monospace;
+    color: var(--body-text-color);
+  }
+
+  .to-do-extras {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    color: var(--body-text-color);
+    font-size: 15px;
+  }
+
+  .to-do-extras > span:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+  }
+
+  .urgent-icon,
+  .moderate-icon,
+  .low-icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--container-color);
+    box-shadow: var(--container-box-shadow); 
+  }
+
+  .urgent-icon {
+    background-color: var(--red);
+  }
+  
+  .moderate-icon {
+    background-color: var(--orange);
+  }
+
+  .low-icon {
+    background-color: var(--green);
+  }
+
+  .urgent {
+    border: 2px solid var(--red);
+  }
+
+  .moderate {
+    border: 2px solid var(--orange);
+  }
+
+  .low {
+    border: 2px solid var(--green);
   }
