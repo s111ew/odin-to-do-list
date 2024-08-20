@@ -55,11 +55,10 @@
   }
 
   body {
-    --background-color: rgb(26, 26, 26);
-    --container-color: rgb(33, 33, 33);
-    --hover-color: rgb(44, 44, 44);
-    --selected-color: rgb(64, 64, 64);
-    --selected-hover-color: rgb(84, 84, 84);
+    --background-color: rgb(3, 6, 41);
+    --container-color: rgb(26, 27, 54);
+    --hover-color: rgb(33, 36, 66);
+    --selected-color: rgb(40, 44, 79);
     --container-border-radius: 20px;
     --container-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
     --header-text-color: rgb(230, 231, 237);
@@ -125,6 +124,15 @@
     background-color: var(--container-color);
   }
 
+  .container-header > img {
+    width: 45px;
+  }
+
+  .container-header > img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
   h2 {
     font-weight: 600;
     font-size: 2em;
@@ -142,7 +150,6 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--container-box-shadow);
-    border: 1px solid var(--selected-hover-color)
   }
 
   .add:hover {
@@ -166,12 +173,10 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    background-color: var(--selected-color);
-    padding: 15px 25px 25px 25px;
+    padding: 15px 15px 25px 25px;
     margin: 15px 0;
     border-radius: var(--container-border-radius);
     cursor: pointer;
-    border: 1px solid var(--selected-hover-color);
   }
 
   .project > h3 {
@@ -191,13 +196,13 @@
 
   .to-do-grid {
     margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 15px;
   }
 
   .to-do {
-    background-color: var(--selected-color);
+    background-color: var(--hover-color);
     padding: 15px 25px 25px 25px;
     border-radius: var(--container-border-radius);
     display: flex;
@@ -208,13 +213,23 @@
 
   .project,
   .to-do {
-    box-shadow: var(--container-box-shadow);
+    min-width: 320px;
   }
 
-  .project:hover,
-  .to-do:hover {
-    background-color: var(--selected-hover-color);
+  .project:not(.selected):hover{
+    background-color: var(--hover-color);
     cursor: pointer;
+  }
+
+  .to-do:hover {
+    background-color: var(--selected-color);
+    cursor: pointer;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .to-do-title {
@@ -222,9 +237,19 @@
     justify-content: space-between;
   }
 
-  .to-do-title > img:hover {
+  .icons {
+    display: flex;
+    gap: 5px;
+  }
+
+  .icons > img {
+    width: 24px;
+  }
+
+  .icons > img:hover,
+  .project-header > img:hover {
+    transform: scale(1.05);
     cursor: pointer;
-    transform: scale(1.1);
   }
 
   .to-do-description {
@@ -270,13 +295,17 @@
   }
 
   .urgent {
-    border: 2px solid var(--red);
+    border: 1px solid var(--red);
   }
 
   .moderate {
-    border: 2px solid var(--orange);
+    border: 1px solid var(--orange);
   }
 
   .low {
-    border: 2px solid var(--green);
+    border: 1px solid var(--green);
+  }
+
+  .selected {
+    background-color: var(--selected-color);
   }
