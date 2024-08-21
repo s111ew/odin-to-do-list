@@ -121,6 +121,7 @@
   .container-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--container-color);
   }
 
@@ -129,8 +130,14 @@
   }
 
   .container-header > img:hover {
-    transform: scale(1.05);
+    animation: grow-and-spin 0.2s ease-in-out forwards;
     cursor: pointer;
+  }
+
+  @keyframes grow-and-spin {
+    100% {
+        transform: scale(1.1);
+    }
   }
 
   h2 {
@@ -194,6 +201,31 @@
     gap: 15px;
   }
 
+  .pill-container {
+    display: flex;
+    gap: 15px;
+  }
+
+  .pill {
+    border: 2px solid var(--header-text-color);
+    padding: 5px 15px;
+    background-color: var(--hover-color);
+    font-family: monospace;
+  }
+
+  .pill:hover {
+    cursor: pointer;
+    background-color: var(--selected-color);
+  }
+
+  .add-button {
+    border-radius: 50px;
+  }
+
+  .filter-button {
+    border-radius: 25px;
+  }
+
   .to-do-grid {
     margin-top: 15px;
     display: flex;
@@ -203,12 +235,32 @@
 
   .to-do {
     background-color: var(--hover-color);
-    padding: 15px 25px 25px 25px;
+    padding: 20px 25px;
     border-radius: var(--container-border-radius);
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 700px;
+  }
+
+  .complete-button {
+    width: 25px;
+    height: 25px;
+    border: 3px solid var(--header-text-color);
+    border-radius: 50%;
+  }
+
+  .complete-button:hover {
+    background-color: var(--header-text-color);
+  }
+
+  .to-do-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+    flex: 1;
   }
 
   .project,
@@ -237,16 +289,11 @@
     justify-content: space-between;
   }
 
-  .icons {
-    display: flex;
-    gap: 5px;
-  }
-
-  .icons > img {
+  .to-do-title > img {
     width: 24px;
   }
 
-  .icons > img:hover,
+  .to-do-title > img:hover,
   .project-header > img:hover {
     transform: scale(1.05);
     cursor: pointer;
@@ -270,28 +317,6 @@
     align-items: center;
     gap: 5px;
 
-  }
-
-  .urgent-icon,
-  .moderate-icon,
-  .low-icon {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid var(--container-color);
-    box-shadow: var(--container-box-shadow); 
-  }
-
-  .urgent-icon {
-    background-color: var(--red);
-  }
-  
-  .moderate-icon {
-    background-color: var(--orange);
-  }
-
-  .low-icon {
-    background-color: var(--green);
   }
 
   .urgent {
