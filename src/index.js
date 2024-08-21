@@ -1,52 +1,58 @@
-import "./style.css"
-
+import './style.css';
 import projects from './projects.json' assert { type: 'json' };
+import editIconSvg from './images/edit.svg';
 
-import editIconSvg from './images/edit.svg'
+const PRIORITY_URGENT = 3;
 
-function paintProjects() {
-    projects.forEach((project) => {
-        let numOfUrgentToDos = 0;
-        project["toDo"].forEach(toDo => {
-            if (toDo.priority === 3) {
-                numOfUrgentToDos++
-            }
-        })
-        createProjectElement(project.projectName, project["toDo"].length, numOfUrgentToDos, project["toDo"][0]["due"]);
-    })
+function countUrgentTasks(toDos) {
+    return toDos.reduce((count, toDo) => {
+        return count + (toDo.priority === PRIORITY_URGENT ? 1 : 0);
+    }, 0);
 }
 
-function createProjectElement(projName, numOfToDos, numOfUrgents, nextDueDate) {
-    const projectsGrid = document.querySelector(".projects-grid");
+function createProjectElement({ projectName, toDo }) {
+    const projectsGrid = document.querySelector('.projects-grid');
 
-    const projectContainer = document.createElement("div");
-    projectContainer.classList.add("project");
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add('project');
 
-    const projectHeader = document.createElement("div");
-    projectHeader.classList.add("project-header");
+    const projectHeader = document.createElement('div');
+    projectHeader.classList.add('project-header');
 
-    const projectName = document.createElement("h3");
-    projectName.textContent = projName;
+    const projectNameElement = document.createElement('h3');
+    projectNameElement.textContent = projectName;
 
-    const editIcon = document.createElement("img");
-    editIcon.alt = "edit icon";
+    const editIcon = document.createElement('img');
+    editIcon.alt = 'Edit icon';
     editIcon.src = editIconSvg;
-    
-    projectHeader.appendChild(projectName);
-    projectHeader.appendChild(editIcon);
 
+    projectHeader.appendChild(projectNameElement);
+    projectHeader.appendChild(editIcon);
     projectContainer.appendChild(projectHeader);
 
-    const projectContains = document.createElement("span");
-    projectContains.textContent = `Contains ${numOfToDos} to-dos (${numOfUrgents} Urgent)`;
+    const numOfToDos = toDo.length;
+    const numOfUrgents = countUrgentTasks(toDo);
+    const nextDueDate = toDo.length > 0 ? toDo[0].due : 'No due date';
 
-    const projectDueDate = document.createElement("span");
-    projectDueDate.textContent = `Next due date ${nextDueDate}`;
+    const projectDetails = document.createElement('span');
+    projectDetails.textContent = `Contains ${numOfToDos} to-dos (${numOfUrgents} Urgent)`;
 
-    projectContainer.appendChild(projectContains);
+    const projectDueDate = document.createElement('span');
+    projectDueDate.textContent = `Next due date: ${nextDueDate}`;
+
+    projectContainer.appendChild(projectDetails);
     projectContainer.appendChild(projectDueDate);
 
     projectsGrid.appendChild(projectContainer);
 }
 
-window.onload = paintProjects();
+function paintProjects() {
+    if (!projects || !Array.isArray(projects)) {
+        console.error('Invalid projects data.');
+        return;
+    }
+
+    projects.forEach(createProjectElement);
+}
+
+window.addEventListener('load', paintProjects);
