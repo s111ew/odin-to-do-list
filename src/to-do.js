@@ -44,8 +44,6 @@ export function createToDoElement(toDo) {
 
     toDoBody.appendChild(toDoTitle);
 
-    toDoContainer.appendChild(toDoBody);
-
      const toDoDescription = document.createElement("p");
      toDoDescription.textContent = toDo["description"];
 
