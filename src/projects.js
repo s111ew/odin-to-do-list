@@ -39,4 +39,15 @@ export function createProjectElement({ projectName, toDo, selected }) {
     projectContainer.appendChild(projectDueDate);
 
     projectsGrid.appendChild(projectContainer);
+
+    addProjectEventListeners();
+}
+
+export function addProjectEventListeners() {
+    const projects = document.querySelectorAll(".project:not(.new-project)");
+    projects.forEach(project => {
+        project.addEventListener("click", () => {
+            utility.makeSelected(project);
+        })
+    })
 }

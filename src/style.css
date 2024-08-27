@@ -171,10 +171,6 @@
     cursor: pointer;
   }
 
-  .project > h3 {
-    font-size: 20px;
-  }
-
   .project > span {
     font-family: monospace;
     color: var(--body-text-color);
@@ -185,24 +181,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 25px !important;
+    gap: 15px;
+    padding: 25px 25px 15px 25px !important;
   }
 
-  .new-project>input {
-    background-color: var(--selected-color);
+  .new-project:hover {
+    cursor: default;
+  }
+
+  .new-project > input {
+    background-color: var(--container-color);
     border: none;
-    border-bottom: 1px solid var(--header-text-color);
     width: 100%;
     color: var(--header-text-color);
+    font-family: 'Roboto';
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 18.72px;
   }
 
-  .buttons {
+  .new-project > input::placeholder {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--body-text-color);
+  }
+
+  .new-project-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
   }  
+
+  .new-project-buttons > .pill {
+    background-color: var(--selected-color);
+  }
 
   .to-do-container {
     display: flex;
@@ -228,6 +242,11 @@
   }
 
   .add-button {
+    border-radius: 50px;
+    padding: 5px 26px;
+  }
+
+  .cancel-button {
     border-radius: 50px;
   }
 

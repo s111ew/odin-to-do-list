@@ -1,3 +1,5 @@
+import { projects } from "./index.js";
+
 const PRIORITY_URGENT = 3;
 
 export function countUrgentTasks(toDos) {
@@ -18,4 +20,23 @@ export function parsePriority(toDo) {
             return "Urgent"
             break;
      }
+}
+
+export function removeAllSelected() {
+    const projects = document.querySelectorAll(".project:not(.new-project)");
+    projects.forEach(project => {
+        if (project.classList.contains("selected")) {
+            project.classList.remove("selected");
+        }
+    })
+}
+
+export function makeSelected(element) {
+    const projects = document.querySelectorAll(".project:not(.new-project)");
+    projects.forEach(project => {
+        if (project.classList.contains("selected")) {
+            project.classList.remove("selected");
+        }
+    })
+    element.classList.add("selected");
 }

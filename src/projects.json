@@ -20,8 +20,7 @@
                     "due": "30/08/2024",
                     "priority": 1
                 }
-            ],
-            "selected": true
+            ]
         },
         {
             "projectName": "Refactor Weather API",
@@ -38,7 +37,6 @@
                     "due": "05/09/2024",
                     "priority": 1
                 }
-            ],
-            "selected": false
+            ]
         }
     ]
