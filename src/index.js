@@ -21,9 +21,9 @@ function paintToDos() {
     )
 }
 
-function paintPage() {
+function paintPageOnLoad() {
     paintProjects();
     paintToDos();
 }
 
-window.addEventListener('load', paintPage);
+window.addEventListener('load', paintPageOnLoad);

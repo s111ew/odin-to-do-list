@@ -2,11 +2,14 @@ import editIconSvg from './images/edit.svg';
 
 import * as utility from './utility.js'
 
-export function createProjectElement({ projectName, toDo }) {
+export function createProjectElement({ projectName, toDo, selected }) {
     const projectsGrid = document.querySelector('.projects-grid');
 
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('project');
+    if (selected === true) {
+        projectContainer.classList.add('selected');
+    }
 
     const projectHeader = document.createElement('div');
     projectHeader.classList.add('project-header');

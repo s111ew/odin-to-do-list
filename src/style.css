@@ -125,21 +125,6 @@
     background-color: var(--container-color);
   }
 
-  .container-header > img {
-    width: 45px;
-  }
-
-  .container-header > img:hover {
-    animation: grow-and-spin 0.2s ease-in-out forwards;
-    cursor: pointer;
-  }
-
-  @keyframes grow-and-spin {
-    100% {
-        transform: scale(1.1);
-    }
-  }
-
   h2 {
     font-weight: 600;
     font-size: 2em;
@@ -195,6 +180,30 @@
     color: var(--body-text-color);
   }
 
+  .new-project {
+    background-color: var(--selected-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 25px !important;
+  }
+
+  .new-project>input {
+    background-color: var(--selected-color);
+    border: none;
+    border-bottom: 1px solid var(--header-text-color);
+    width: 100%;
+    color: var(--header-text-color);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }  
+
   .to-do-container {
     display: flex;
     flex-direction: column;
@@ -224,6 +233,8 @@
 
   .filter-button {
     border-radius: 25px;
+    color: var(--body-text-color);
+    border: 2px solid var(--body-text-color);
   }
 
   .to-do-grid {
@@ -268,7 +279,7 @@
     min-width: 320px;
   }
 
-  .project:not(.selected):hover{
+  .project:not(.selected):not(.new-project):hover{
     background-color: var(--hover-color);
     cursor: pointer;
   }
