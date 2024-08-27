@@ -1,7 +1,9 @@
 import './style.css';
-import projects from './projects.json' assert { type: 'json' };
+import defaultProjects from './projects.json' assert { type: 'json' };
 import { createProjectElement } from './projects.js';
 import { createToDoElement } from './to-do.js';
+
+let projects = defaultProjects;
 
 function paintProjects() {
     if (!projects || !Array.isArray(projects)) {
@@ -13,13 +15,15 @@ function paintProjects() {
 }
 
 function paintToDos() {
-    
+    projects[0]["toDo"].forEach(toDo => {
+            createToDoElement(toDo)
+        }
+    )
 }
 
-function getCurrentProject() {
-    let currentProject = projects[0];
-
-    return currentProject
+function paintPage() {
+    paintProjects();
+    paintToDos();
 }
 
-window.addEventListener('load', paintProjects, paintToDos);
+window.addEventListener('load', paintPage);
