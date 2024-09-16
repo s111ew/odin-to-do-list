@@ -4,10 +4,21 @@ import { createProjectElement } from './projects.js';
 import { createToDoElement } from './to-do.js';
 import * as utils from "./utility.js"
 import * as np from "./new-project.js";
+import * as ntd from "./new-to-do.js";
 
 export let projects = defaultProjects;
 
-let currentProject = projects[0];
+export let currentProject = {
+    _currentP: projects[0],
+
+    get currentP() {
+        return this._currentP
+    },
+
+    set currentP(index) {
+        this._currentP = projects[index]
+    }
+}
 
 function paintProjects() {
     if (!projects || !Array.isArray(projects)) {
@@ -33,19 +44,25 @@ export function repaintPage() {
     toDoGrid.innerHTML = "";
 
     paintProjects();
-    paintToDos(currentProject);
+    paintToDos(currentProject.currentP);
     addNewItemEventListeners();
 }
 
 function addNewItemEventListeners() {
-    const npButton = document.querySelector("#new-project-button");
-    npButton.addEventListener("click", () => {
-        const container = document.querySelector(".new-project");
-        if (!container) {
-            np.renderNewProjectInput();
-        }
-        utils.removeAllSelected();
-    })
+    function setupButtonEvent(buttonSelector, containerSelectors, renderFunction) {
+        const button = document.querySelector(buttonSelector);
+        button.addEventListener("click", () => {
+            const container = containerSelectors
+                .map(selector => document.querySelector(selector))
+                .find(el => el !== null);
+            if (!container) {
+                renderFunction();
+            }
+        });
+    }
+
+    setupButtonEvent("#new-project-button", [".new-project", ".new-to-do"], np.renderNewProjectInput);
+    setupButtonEvent("#new-to-do-button", [".new-to-do", ".new-project"], ntd.renderNewToDoInput);
 }
 
 

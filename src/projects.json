@@ -5,19 +5,19 @@
                 {
                     "name": "Design & Development",
                     "description": "Design and implement the homepage layout using HTML/CSS.",
-                    "due": "30/08/2024",
+                    "due": "2024-09-31",
                     "priority": 3
                 },
                 {
                     "name": "Blog Section",
                     "description": "Integrate a blog section with a CMS (e.g. Wordpress or custom-built).",
-                    "due": "29/08/2024",
+                    "due": "2024-10-03",
                     "priority": 2
                 },
                 {
                     "name": "Mobile Optimisation",
                     "description": "Optimise the website for mobile devices and SEO.",
-                    "due": "30/08/2024",
+                    "due": "2025-01-27",
                     "priority": 1
                 }
             ]
@@ -28,13 +28,13 @@
                 {
                     "name": "Rewrite JS Classes",
                     "description": "Refactor JS class modules into factory functions for more readable code",
-                    "due": "01/09/2024",
+                    "due": "2024-10-01",
                     "priority": 3
                 },
                 {
                     "name": "Finish Writing Docs",
                     "description": "Write about section of documentation on project site",
-                    "due": "05/09/2024",
+                    "due": "2024-12-31",
                     "priority": 1
                 }
             ]

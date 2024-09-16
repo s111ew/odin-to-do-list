@@ -1,4 +1,5 @@
 import { projects } from "./index.js";
+import { currentProject } from "./index.js";
 
 const PRIORITY_URGENT = 3;
 
@@ -12,31 +13,22 @@ export function parsePriority(toDo) {
     switch (toDo["priority"]) {
         case 1:
             return "Low"
-            break;
         case 2:
             return "Moderate"
-            break;
         case 3:
             return "Urgent"
-            break;
      }
 }
 
-export function removeAllSelected() {
-    const projects = document.querySelectorAll(".project:not(.new-project)");
-    projects.forEach(project => {
+export function makeSelected() {
+    const projectNodeList = document.querySelectorAll(".project:not(.new-project)");
+    projectNodeList.forEach(project => {
         if (project.classList.contains("selected")) {
             project.classList.remove("selected");
         }
     })
-}
 
-export function makeSelected(element) {
-    const projects = document.querySelectorAll(".project:not(.new-project)");
-    projects.forEach(project => {
-        if (project.classList.contains("selected")) {
-            project.classList.remove("selected");
-        }
-    })
-    element.classList.add("selected");
+    const selectedProject = projectNodeList[projects.indexOf(currentProject.currentP)];
+
+    selectedProject.classList.add("selected");
 }

@@ -189,7 +189,9 @@
     cursor: default;
   }
 
-  .new-project > input {
+  .new-project > input,
+  .input-container > input,
+  .input-container > select {
     background-color: var(--container-color);
     border: none;
     width: 100%;
@@ -201,13 +203,17 @@
     font-size: 18.72px;
   }
 
-  .new-project > input::placeholder {
+  .new-project > input::placeholder,
+  .input-container > input::placeholder,
+  .input-container > input[type="date"],
+  .input-container > select {
     font-size: 17px;
     font-weight: 400;
     color: var(--body-text-color);
   }
 
-  .new-project-buttons {
+  .new-project-buttons,
+  .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -347,6 +353,20 @@
     align-items: center;
     gap: 5px;
 
+  }
+
+  .new-to-do {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #BEBEBE;
+  }
+
+  .input-container {
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
   }
 
   .urgent {

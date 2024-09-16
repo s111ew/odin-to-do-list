@@ -1,6 +1,7 @@
 import { projects } from "./index.js";
 import { repaintPage } from "./index.js";
 import * as utils from "./utility.js"
+import { currentProject } from "./index.js";
 
 export function renderNewProjectInput() {
 
@@ -31,9 +32,11 @@ export function renderNewProjectInput() {
     npAddButton.addEventListener("click", () => {
         const npInput = document.querySelector(".new-project > input");
         if (npInput.value) {
-            pushNewProject()
-            removeNewProjectInput()
-            repaintPage()
+            pushNewProject();
+            removeNewProjectInput();
+            currentProject._currentP = projects[0]
+            repaintPage();
+            utils.makeSelected();
         }
     }
     );
@@ -42,8 +45,6 @@ export function renderNewProjectInput() {
     npButtonContainer.appendChild(npAddButton);
 
     npContainer.appendChild(npButtonContainer);
-
-    utils.makeSelected(npContainer)
 
     const projectsGrid = document.querySelector(".projects-grid");
 
@@ -62,10 +63,6 @@ export function pushNewProject() {
     const npInput = document.querySelector(".new-project > input");
     const npObject = createProject(npInput.value);
     projects.unshift(npObject);
-
-    console.log(projects);
-
-
 }
 
 export function createProject(name) {

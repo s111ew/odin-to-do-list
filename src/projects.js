@@ -1,15 +1,15 @@
 import editIconSvg from './images/edit.svg';
+import { repaintPage } from './index.js';
+import { currentProject } from './index.js';
 
 import * as utility from './utility.js'
 
-export function createProjectElement({ projectName, toDo, selected }) {
+export function createProjectElement({ projectName, toDo }) {
     const projectsGrid = document.querySelector('.projects-grid');
 
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('project');
-    if (selected === true) {
-        projectContainer.classList.add('selected');
-    }
+    
 
     const projectHeader = document.createElement('div');
     projectHeader.classList.add('project-header');
@@ -45,9 +45,11 @@ export function createProjectElement({ projectName, toDo, selected }) {
 
 export function addProjectEventListeners() {
     const projects = document.querySelectorAll(".project:not(.new-project)");
-    projects.forEach(project => {
+    projects.forEach((project, index) => {
         project.addEventListener("click", () => {
-            utility.makeSelected(project);
-        })
-    })
+            currentProject.currentP = index; 
+            repaintPage();
+            utility.makeSelected();
+        });
+    });
 }
