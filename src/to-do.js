@@ -1,6 +1,5 @@
 import removeIconSvg from './images/cancel_button.svg';
 import { currentProject, projects, repaintPage } from './index.js';
-
 import * as utility from './utility.js'
 
 export function createToDoElement(toDo) {

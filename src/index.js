@@ -6,7 +6,7 @@ import * as utils from "./utility.js"
 import * as np from "./new-project.js";
 import * as ntd from "./new-to-do.js";
 
-export let projects = defaultProjects;
+export let projects = JSON.parse(localStorage.getItem("storedProjects")) || defaultProjects;
 
 export let currentProject = {
     _currentP: projects[0],
@@ -19,6 +19,11 @@ export let currentProject = {
         this._currentP = projects[index]
     }
 }
+
+window.addEventListener('load', () => {
+    repaintPage();
+    utils.makeSelected()
+});
 
 function paintProjects() {
     if (!projects || !Array.isArray(projects)) {
@@ -70,10 +75,3 @@ function addNewItemEventListeners() {
     setupButtonEvent("#new-project-button", [".new-project", ".new-to-do"], np.renderNewProjectInput);
     setupButtonEvent("#new-to-do-button", [".new-to-do", ".new-project"], ntd.renderNewToDoInput);
 }
-
-window.addEventListener('load', () => {
-    if (JSON.parse(localStorage.getItem("storedProjects")) !== null) {
-        projects = JSON.parse(localStorage.getItem("storedProjects"));
-    }
-    repaintPage()
-});
