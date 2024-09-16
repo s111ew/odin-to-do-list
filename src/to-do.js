@@ -1,4 +1,4 @@
-import editIconSvg from './images/edit.svg';
+import removeIconSvg from './images/cancel_button.svg';
 import { currentProject, projects, repaintPage } from './index.js';
 
 import * as utility from './utility.js'
@@ -39,11 +39,14 @@ export function createToDoElement(toDo) {
 
     toDoTitle.appendChild(toDoHeader);
 
-    const editIcon = document.createElement("img");
-    editIcon.alt = "Edit icon";
-    editIcon.src = editIconSvg;
+    const removeIcon = document.createElement("img");
+    removeIcon.alt = "Remove icon";
+    removeIcon.src = removeIconSvg;
+    removeIcon.addEventListener("click", () => {
+        completeToDo(toDo)
+})
 
-    toDoTitle.appendChild(editIcon);
+    toDoTitle.appendChild(removeIcon);
 
     toDoBody.appendChild(toDoTitle);
 

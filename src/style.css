@@ -176,6 +176,11 @@
     color: var(--body-text-color);
   }
 
+  .project-icon-container {
+    display: flex;
+    gap: 5px;
+  }
+
   .new-project {
     background-color: var(--selected-color);
     display: flex;
@@ -331,7 +336,7 @@
   }
 
   .to-do-title > img:hover,
-  .project-header > img:hover {
+  .project-icon-container > img:hover {
     transform: scale(1.05);
     cursor: pointer;
   }
