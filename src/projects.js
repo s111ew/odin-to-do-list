@@ -73,6 +73,8 @@ export function removeProject(project) {
         // Remove the project from the array
         projects.splice(index, 1);
         
+        localStorage.setItem("storedProjects", JSON.stringify(projects));
+        
         // Repaint the page or update the UI
         repaintPage();
         

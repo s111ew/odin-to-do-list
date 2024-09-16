@@ -72,5 +72,8 @@ function addNewItemEventListeners() {
 }
 
 window.addEventListener('load', () => {
+    if (JSON.parse(localStorage.getItem("storedProjects")) !== null) {
+        projects = JSON.parse(localStorage.getItem("storedProjects"));
+    }
     repaintPage()
 });

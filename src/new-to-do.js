@@ -135,6 +135,7 @@ export function addNewToDo() {
 export function pushNewToDo(title, desc, dueDate, priority) {
     const newToDo = createNewToDo(title, desc, dueDate, priority);
     currentProject.currentP.toDo.unshift(newToDo);
+    localStorage.setItem("storedProjects", JSON.stringify(projects));
 }
 
 export function createNewToDo(title, desc, dueDate, priority) {

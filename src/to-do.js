@@ -94,6 +94,7 @@ export function completeToDo(toDo) {
 
     setTimeout(() => {
         currentProject.currentP["toDo"].splice(currentToDoIndex, 1);
+        localStorage.setItem("storedProjects", JSON.stringify(projects));
         repaintPage();
     }, 450);
 }
