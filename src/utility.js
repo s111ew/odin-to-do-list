@@ -32,3 +32,12 @@ export function makeSelected() {
 
     selectedProject.classList.add("selected");
 }
+
+export function deselectAll() {
+    const projectNodeList = document.querySelectorAll(".project:not(.new-project)");
+    projectNodeList.forEach(project => {
+        if (project.classList.contains("selected")) {
+            project.classList.remove("selected");
+        }
+    }) 
+}

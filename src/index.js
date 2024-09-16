@@ -46,6 +46,7 @@ export function repaintPage() {
     paintProjects();
     paintToDos(currentProject.currentP);
     addNewItemEventListeners();
+    utils.makeSelected();
 }
 
 function addNewItemEventListeners() {
@@ -57,6 +58,9 @@ function addNewItemEventListeners() {
                 .find(el => el !== null);
             if (!container) {
                 renderFunction();
+            }
+            if (buttonSelector = '#new-project-button') {
+                utils.deselectAll();
             }
         });
     }

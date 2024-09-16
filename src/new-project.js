@@ -23,7 +23,10 @@ export function renderNewProjectInput() {
     npCancelButton.classList.add("pill");
     npCancelButton.classList.add("cancel-button");
     npCancelButton.textContent = "Cancel";
-    npCancelButton.addEventListener("click", removeNewProjectInput);
+    npCancelButton.addEventListener("click", () => {
+        removeNewProjectInput();
+        utils.makeSelected();
+});
 
     const npAddButton = document.createElement("div");
     npAddButton.classList.add("pill");

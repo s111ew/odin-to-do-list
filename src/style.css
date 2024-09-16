@@ -384,3 +384,13 @@
   .selected {
     background-color: var(--selected-color);
   }
+
+  .fade-out {
+    animation: fadeout 300ms forwards;
+  }
+
+  @keyframes fadeout {
+    100% {
+      opacity: 0;
+    }
+  }
