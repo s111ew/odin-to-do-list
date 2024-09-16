@@ -1,7 +1,7 @@
 import './style.css';
 import defaultProjects from './projects.json' assert { type: 'json' };
 import { createProjectElement } from './projects.js';
-import { createToDoElement } from './to-do.js';
+import { createToDoElement, emptyToDoNotice } from './to-do.js';
 import * as utils from "./utility.js"
 import * as np from "./new-project.js";
 import * as ntd from "./new-to-do.js";
@@ -30,10 +30,12 @@ function paintProjects() {
 }
 
 function paintToDos(project) {
+    if (project["toDo"].length === 0) {
+        emptyToDoNotice();
+    }
     project["toDo"].forEach(toDo => {
             createToDoElement(toDo)
-        }
-    )
+        })
 }
 
 export function repaintPage() {

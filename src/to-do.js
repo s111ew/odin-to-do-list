@@ -72,6 +72,16 @@ export function createToDoElement(toDo) {
      toDoGrid.appendChild(toDoContainer);
 }
 
+export function emptyToDoNotice() {
+    const toDoGrid = document.querySelector(".to-do-grid");
+
+    const noToDos = document.createElement("div");
+    noToDos.classList.add("no-to-dos");
+    noToDos.textContent = "Click 'New' to add a new to-do for this project"
+
+    toDoGrid.appendChild(noToDos);
+}
+
 
 export function completeToDo(toDo) {
     const currentToDoIndex = currentProject.currentP["toDo"].indexOf(toDo);

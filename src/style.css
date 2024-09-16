@@ -228,6 +228,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    min-width: 674px;
   }
 
   .pill-container {
@@ -367,6 +368,12 @@
     gap: 15px;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: repeat(2, 1fr);
+  }
+
+  .no-to-dos {
+    text-align: center;
+    padding-top: 90px;
+    font-size: 1.5em;
   }
 
   .urgent {

@@ -1,6 +1,5 @@
 import { projects } from "./index.js";
 import { repaintPage } from "./index.js";
-import * as utils from "./utility.js"
 import { currentProject } from "./index.js";
 
 export function renderNewToDoInput() {
@@ -94,7 +93,9 @@ export function renderNewToDoInput() {
 
     ntdContainer.appendChild(ntdButtonContainer);
 
-    toDoGrid.insertBefore(ntdContainer, toDoGrid.firstChild)
+    toDoGrid.insertBefore(ntdContainer, toDoGrid.firstChild);
+
+    checkAndHideNoToDos();
 }
 
 export function removeNewToDoInput() {
@@ -102,6 +103,19 @@ export function removeNewToDoInput() {
 
     if (ntdInput) {
         ntdInput.remove();
+    }
+
+    checkAndHideNoToDos();
+}
+
+function checkAndHideNoToDos() {
+    const newToDo = document.querySelector(".new-to-do");
+    const noToDos = document.querySelector(".no-to-dos");
+
+    if (newToDo && noToDos) {
+        noToDos.style.opacity = "0";
+    } else if (noToDos) {
+        noToDos.style.opacity = "1";
     }
 }
 
