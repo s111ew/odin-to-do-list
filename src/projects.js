@@ -1,4 +1,3 @@
-import editIconSvg from './images/edit.svg';
 import removeIconSvg from './images/cancel_button.svg';
 import { repaintPage } from './index.js';
 import { currentProject } from './index.js';
@@ -17,21 +16,17 @@ export function createProjectElement(project) {
     const projectNameElement = document.createElement('h3');
     projectNameElement.textContent = project.projectName;
 
-    const editIcon = document.createElement('img');
-    editIcon.alt = 'Edit icon';
-    editIcon.src = editIconSvg;
-
     const removeIcon = document.createElement('img');
     removeIcon.alt = 'Remove icon';
     removeIcon.src = removeIconSvg;
-    removeIcon.addEventListener("click", () => {
+    removeIcon.addEventListener("click", (event) => {
+        event.stopPropagation();
         removeProject(project);
     })
 
     const projectIconContainer = document.createElement("div");
     projectIconContainer.classList.add("project-icon-container");
 
-    projectIconContainer.appendChild(editIcon);
     projectIconContainer.appendChild(removeIcon);
 
     projectHeader.appendChild(projectNameElement);
@@ -60,15 +55,32 @@ export function addProjectEventListeners() {
     const projects = document.querySelectorAll(".project:not(.new-project)");
     projects.forEach((project, index) => {
         project.addEventListener("click", () => {
-            currentProject.currentP = index; 
-            repaintPage();
+            currentProject.currentP = index;
             utility.makeSelected();
+            repaintPage();
         });
     });
 }
 
 export function removeProject(project) {
+    // Validate the input project and projects array
+    if (!project || !Array.isArray(projects) || projects.length <= 1) return;
+
     const index = projects.indexOf(project);
-    projects.splice(index, 1);
-    repaintPage();
-}
+
+    // Only proceed if the project exists in the list
+    if (index !== -1) {
+        // Remove the project from the array
+        projects.splice(index, 1);
+        
+        // Repaint the page or update the UI
+        repaintPage();
+        
+            const firstProject = document.querySelector(".project:first-child");
+
+            // Ensure the first project exists before trying to click it
+            if (firstProject) {
+                firstProject.click();
+            }
+        }
+    }

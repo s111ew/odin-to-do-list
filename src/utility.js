@@ -28,7 +28,7 @@ export function makeSelected() {
         }
     })
 
-    const selectedProject = projectNodeList[projects.indexOf(currentProject.currentP)];
+    const selectedProject = projectNodeList[projects.indexOf(currentProject.currentP)] || projectNodeList[0];
     selectedProject.classList.add("selected");
 
     const projectTitle = document.querySelector(".project-title");

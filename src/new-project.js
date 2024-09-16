@@ -66,6 +66,7 @@ export function pushNewProject() {
     const npInput = document.querySelector(".new-project > input");
     const npObject = createProject(npInput.value);
     projects.unshift(npObject);
+    localStorage.setItem("projectsArray", JSON.stringify(projects));
 }
 
 export function createProject(name) {

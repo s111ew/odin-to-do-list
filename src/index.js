@@ -71,6 +71,6 @@ function addNewItemEventListeners() {
     setupButtonEvent("#new-to-do-button", [".new-to-do", ".new-project"], ntd.renderNewToDoInput);
 }
 
-
-
-window.addEventListener('load', repaintPage);
+window.addEventListener('load', () => {
+    repaintPage()
+});
